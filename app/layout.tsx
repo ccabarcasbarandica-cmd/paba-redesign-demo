@@ -3,6 +3,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { practiceAreas } from '@/lib/content';
+import { isDemoDeployment } from '@/lib/deployment';
 import './globals.css';
 
 const siteTitle = 'Paba & Asociados | Litigio estratégico y asesoría jurídica';
@@ -20,7 +21,13 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', locale: 'es_CO', siteName: 'Paba & Asociados', title: siteTitle, description: siteDescription, url: '/', images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Paba & Asociados — Litigio estratégico y asesoría jurídica de alta complejidad' }] },
   twitter: { card: 'summary_large_image', title: siteTitle, description: siteDescription, images: ['/og.png'] },
   icons: { icon: '/logo-mark.png', apple: '/logo-mark.png' },
-  robots: { index: true, follow: true },
+  robots: isDemoDeployment
+    ? {
+        index: false,
+        follow: false,
+        googleBot: { index: false, follow: false },
+      }
+    : { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

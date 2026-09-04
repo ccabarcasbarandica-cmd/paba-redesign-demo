@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { isDemoDeployment } from '@/lib/deployment';
 
 const nav = [
   { href: '/firma', label: 'La firma' },
@@ -14,7 +15,11 @@ export function SiteHeader() {
   return (
     <header className="global-header">
       <div className="utility-bar">
-        <div className="container"><span>Bogotá D. C. — Colombia</span><a href="tel:+573185481492">+57 318 548 1492</a></div>
+        <div className="container">
+          {isDemoDeployment && <span className="demo-notice">Propuesta de rediseño · Demo conceptual</span>}
+          <span>Bogotá D. C. — Colombia</span>
+          <a href="tel:+573185481492">+57 318 548 1492</a>
+        </div>
       </div>
       <div className="site-header container">
         <Link className="brand" href="/" aria-label="Paba & Asociados, inicio">

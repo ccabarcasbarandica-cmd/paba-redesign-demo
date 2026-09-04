@@ -4,6 +4,12 @@ Demo de rediseño web actualizada con el documento institucional suministrado po
 
 Este proyecto no corresponde al sitio oficial ni se encuentra desplegado en producción.
 
+## Aislamiento de la demo pública
+
+El proyecto Vercel de demostración utiliza `PABA_DEMO_MODE=1`. Este modo añade `noindex, nofollow` a la metadata, envía la cabecera `X-Robots-Tag`, evita publicar en `robots.txt` el sitemap del dominio oficial y muestra el aviso visual de demo. `robots.txt` permite el rastreo de forma intencional para que los buscadores puedan leer y respetar la directiva `noindex`.
+
+Al migrar el proyecto al dominio oficial se debe eliminar `PABA_DEMO_MODE` del entorno de producción y volver a desplegar. No es necesario modificar los canonical, el sitemap ni la arquitectura SEO oficial.
+
 ## Tecnologías
 
 - Next.js
