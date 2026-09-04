@@ -1,17 +1,34 @@
-# Arquitectura editorial
+# Arquitectura de contenidos
 
-El contenido público vive en `lib/content.ts` como colecciones tipadas. La solución no usa base de datos ni CMS: es económica, auditable y se genera junto con el sitio para favorecer velocidad y SEO.
+El contenido público se administra en `lib/content.ts` mediante colecciones tipadas. El documento oficial recibido el 4 de septiembre de 2026 es la fuente principal para lenguaje institucional, áreas, biografía, preguntas frecuentes y datos de contacto.
 
-## Publicar una editorial mensual
+## Áreas de práctica
 
-Agrega un elemento a `editorials` con `slug`, título, categoría, fecha ISO, autor verificado, resumen, imagen, texto alternativo, párrafos y cita opcional. La ruta, los metadatos, Open Graph, datos estructurados y las lecturas relacionadas se generan automáticamente.
+`practiceAreas` contiene exclusivamente las seis áreas aprobadas. `legacyAreaRedirects` conserva compatibilidad con las URLs anteriores sin incluirlas en navegación ni sitemap.
 
-## Publicar un caso
+## Editorial mensual
 
-Agrega un elemento a `publicCases` con contexto, reto, criterio/estrategia, resultado verificable, fuentes, abogados relacionados y editoriales relacionadas. Anonimiza información sensible antes de incorporar el contenido.
+`editorials` conserva la publicación institucional mensual. Cada registro admite slug, título, categoría, fecha, autor, cargo, resumen, portada, tiempo de lectura, cuerpo y cita. Las rutas y metadata se generan automáticamente.
 
-## Publicar un perfil profesional
+## Análisis Jurídico
 
-Agrega un elemento a `professionals` únicamente cuando nombre, cargo, fotografía, estudios, experiencia y enlaces hayan sido validados por la firma. La colección permanece vacía intencionalmente para no reutilizar identidades que parecían contenido de plantilla en el sitio anterior.
+`legalAnalyses` es una biblioteca independiente. Cada artículo admite título, autor, cargo, fecha, área, tiempo de lectura, portada, contenido, SEO, relacionados y CTA. La colección permanece vacía hasta recibir artículos validados.
 
-Después de cualquier publicación, ejecuta `npm run build` y revisa la URL generada.
+## Experiencia y actuaciones de interés
+
+`publicActuations` admite nombre, intervención profesional, medio, enlace, fecha, área y profesionales relacionados. Solo deben incorporarse actuaciones de conocimiento público con fuentes verificables.
+
+## Equipo
+
+`professionals` contiene exclusivamente perfiles aprobados. Los campos de formación, experiencia detallada y publicaciones permanecen vacíos cuando el documento oficial no aporta información suficiente.
+
+## Contenido pendiente
+
+- Fotografía profesional de Jeison Orlando Paba Reyes.
+- Nombres, cargos, biografías, áreas, formación y fotografías de los demás integrantes.
+- Formación académica, experiencia desglosada y publicaciones de Jeison Orlando Paba Reyes.
+- Artículos para la biblioteca de Análisis Jurídico.
+- Textos jurídicos aprobados para las tres páginas legales del footer.
+- Fechas faltantes de algunas publicaciones externas incluidas en la actuación pública.
+
+Después de cualquier publicación se debe ejecutar `npm run build`, revisar sitemap, metadata, enlaces y responsive.
