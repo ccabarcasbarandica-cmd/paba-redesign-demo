@@ -241,7 +241,7 @@ export const publicCases = [
     strategy: 'Esta ficha reúne únicamente fuentes públicas enlazadas por la firma. La demo omite identidades, detalles reservados y cualquier afirmación que no esté documentada.',
     result: 'Las fuentes relacionadas registran decisiones distintas en varias etapas del proceso. Para preservar exactitud, el detalle se consulta directamente en cada publicación.',
     lawyerSlugs: [] as string[],
-    relatedEditorialSlugs: ['que-hacer-ante-denuncia-penal-injusta'],
+    relatedEditorialSlugs: ['que-hacer-ante-denuncia-penal-injusta'] as string[],
     sources: mediaCoverage.filter((item) => ['RCN Radio', 'El Tiempo', 'Noticias Caracol', 'Noticias RCN'].includes(item.outlet)),
   },
 ] as const;
