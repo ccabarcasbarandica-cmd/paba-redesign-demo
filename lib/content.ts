@@ -4,11 +4,7 @@ export type PracticeArea = {
   shortName: string;
   eyebrow: string;
   summary: string;
-  intro: string;
-  audience: string[];
   services: string[];
-  process: { title: string; text: string }[];
-  faqs: { question: string; answer: string }[];
 };
 
 export type Editorial = {
@@ -18,164 +14,247 @@ export type Editorial = {
   date: string;
   displayDate: string;
   author: string;
+  authorRole: string;
   summary: string;
   image: string;
   imageAlt: string;
+  readingTime: string;
   body: string[];
   quote?: string;
+};
+
+export type LegalAnalysis = {
+  slug: string;
+  title: string;
+  author: string;
+  authorRole: string;
+  date: string;
+  displayDate: string;
+  area: string;
+  readingTime: string;
+  cover: string;
+  coverAlt: string;
+  summary: string;
+  content: string[];
+  seoTitle: string;
+  seoDescription: string;
+  relatedSlugs: string[];
+  cta: string;
 };
 
 export type Professional = {
   slug: string;
   name: string;
   role: string;
-  photo: string;
+  photo?: string;
   biography: string[];
-  studies: string[];
-  areaSlugs: string[];
+  areas: string[];
+  education: string[];
   experience: string[];
+  academicActivity: string[];
   publicationSlugs: string[];
-  caseSlugs: string[];
-  mediaUrls: string[];
-  linkedin?: string;
-  email?: string;
+  relatedActuationSlugs: string[];
+};
+
+export type PublicSource = {
+  outlet: string;
+  title: string;
+  url: string;
+  date?: string;
+};
+
+export type PublicActuation = {
+  slug: string;
+  title: string;
+  area: string;
+  date: string;
+  summary: string;
+  intervention: string;
+  context: string;
+  professionalSlugs: string[];
+  sources: PublicSource[];
 };
 
 export const practiceAreas: PracticeArea[] = [
   {
-    slug: 'derecho-penal',
-    name: 'Derecho Penal',
-    shortName: 'Penal',
-    eyebrow: 'Defensa y representación',
-    summary: 'Defensa ante acusaciones, representación de víctimas, extinción de dominio y cumplimiento penal corporativo.',
-    intro: 'Paba & Asociados acompaña a personas, víctimas y organizaciones durante las distintas etapas de un proceso penal, con una estrategia construida desde el análisis temprano del expediente.',
-    audience: ['Personas investigadas o acusadas', 'Víctimas que requieren representación', 'Empresas ante riesgos o investigaciones penales', 'Personas naturales o jurídicas en procesos complejos'],
-    services: ['Asistencia en diligencias, allanamientos y capturas', 'Defensa en indagación, investigación y juicio oral', 'Representación de víctimas ante Fiscalía y jueces', 'Procesos de extinción de dominio y recuperación de bienes', 'Denuncias penales y quejas disciplinarias', 'Cumplimiento penal e investigaciones internas'],
-    process: [
-      { title: 'Lectura del riesgo', text: 'Revisamos la etapa procesal, los hechos disponibles y las decisiones urgentes.' },
-      { title: 'Estrategia probatoria', text: 'Definimos objetivos, evidencia relevante y una ruta de actuación comprensible.' },
-      { title: 'Representación', text: 'Acompañamos diligencias, audiencias y actuaciones con seguimiento continuo.' },
+    slug: 'derecho-penal-y-litigio-penal-estrategico',
+    name: 'Derecho Penal y Litigio Penal Estratégico',
+    shortName: 'Derecho Penal',
+    eyebrow: 'Defensa, representación y estrategia probatoria',
+    summary: 'Representamos personas investigadas o procesadas penalmente, así como víctimas que requieren una intervención jurídica especializada.',
+    services: [
+      'Defensa penal',
+      'Representación judicial de víctimas',
+      'Investigación e indagación',
+      'Audiencias preliminares',
+      'Juicio oral',
+      'Estrategia probatoria',
+      'Recursos ordinarios y extraordinarios',
+      'Casación penal',
+      'Extinción de dominio',
+      'Derecho penal económico',
+      'Asesoría preventiva y análisis de riesgos penales',
     ],
-    faqs: [
-      { question: '¿Debo esperar a una citación para buscar defensa?', answer: 'No. Una revisión temprana permite entender el alcance de la situación y preparar una respuesta informada.' },
-      { question: '¿Representan tanto a víctimas como a personas investigadas?', answer: 'Sí. La firma publica servicios de representación de víctimas y de defensa para personas investigadas o acusadas.' },
-    ],
-  },
-  {
-    slug: 'derecho-laboral',
-    name: 'Derecho Laboral y Seguridad Social',
-    shortName: 'Laboral',
-    eyebrow: 'Personas, empresas y sindicatos',
-    summary: 'Prevención y solución de conflictos laborales individuales, colectivos y de seguridad social.',
-    intro: 'La firma asesora a trabajadores, empleadores y sindicatos, tanto en la prevención de contingencias como en reclamaciones y litigios laborales.',
-    audience: ['Trabajadores ante despidos o derechos vulnerados', 'Empleadores que buscan relaciones laborales sólidas', 'Sindicatos y organizaciones', 'Personas con asuntos de pensión, salud o afiliación'],
-    services: ['Derecho laboral individual y colectivo', 'Elaboración y revisión de contratos', 'Defensa ante despidos y reclamaciones', 'Consultoría empresarial y derecho sindical', 'Prestaciones, incapacidades y pensiones'],
-    process: [
-      { title: 'Revisión documental', text: 'Organizamos contratos, comunicaciones, pagos y antecedentes relevantes.' },
-      { title: 'Cálculo y escenario', text: 'Identificamos derechos, obligaciones y alternativas de negociación o litigio.' },
-      { title: 'Gestión del conflicto', text: 'Representamos la conversación, reclamación o proceso que corresponda.' },
-    ],
-    faqs: [
-      { question: '¿Atienden a trabajadores y empleadores?', answer: 'Sí. El servicio publicado contempla asesoría para trabajadores, empleadores y sindicatos.' },
-      { question: '¿Pueden revisar un despido sin justa causa?', answer: 'Sí. La revisión determina el contexto contractual, los pagos y las alternativas disponibles para el caso concreto.' },
-    ],
-  },
-  {
-    slug: 'derecho-disciplinario',
-    name: 'Derecho Disciplinario',
-    shortName: 'Disciplinario',
-    eyebrow: 'Actuaciones y control disciplinario',
-    summary: 'Orientación estratégica para personas vinculadas a actuaciones disciplinarias y asuntos de función pública.',
-    intro: 'La firma incluye el derecho disciplinario dentro de su práctica. Cada consulta requiere identificar la autoridad, etapa y términos aplicables antes de definir una ruta.',
-    audience: ['Servidores y exservidores públicos', 'Personas notificadas de una actuación', 'Equipos que requieren análisis preventivo', 'Organizaciones relacionadas con función pública'],
-    services: ['Valoración inicial de la actuación', 'Revisión de documentos y términos', 'Preparación de una estrategia de respuesta', 'Acompañamiento jurídico durante el trámite'],
-    process: [
-      { title: 'Identificación', text: 'Precisamos autoridad, etapa, términos y alcance de la actuación.' },
-      { title: 'Revisión', text: 'Estudiamos los documentos y hechos suministrados por el cliente.' },
-      { title: 'Actuación', text: 'Definimos y ejecutamos la ruta jurídica que corresponda al caso.' },
-    ],
-    faqs: [{ question: '¿Qué debo llevar a la consulta?', answer: 'La comunicación recibida, los documentos relacionados y una cronología breve de los hechos.' }],
-  },
-  {
-    slug: 'derecho-electoral',
-    name: 'Derecho Electoral',
-    shortName: 'Electoral',
-    eyebrow: 'Análisis jurídico electoral',
-    summary: 'Asesoría en situaciones jurídicas relacionadas con procesos electorales y decisiones de autoridades.',
-    intro: 'Paba & Asociados incluye el derecho electoral entre sus áreas de experiencia. La atención comienza con la revisión de la situación, los documentos y los plazos relevantes.',
-    audience: ['Personas y organizaciones con una consulta electoral', 'Equipos que requieren revisión preventiva', 'Personas afectadas por una decisión electoral'],
-    services: ['Diagnóstico jurídico inicial', 'Revisión documental y normativa', 'Definición de opciones de actuación', 'Acompañamiento según el alcance acordado'],
-    process: [
-      { title: 'Consulta', text: 'Entendemos el hecho, la decisión o el proceso que origina la necesidad.' },
-      { title: 'Análisis', text: 'Revisamos documentación, competencia y oportunidad de las alternativas.' },
-      { title: 'Ruta', text: 'Presentamos un plan de trabajo claro antes de iniciar actuaciones.' },
-    ],
-    faqs: [{ question: '¿Por qué es importante consultar pronto?', answer: 'En asuntos electorales pueden existir términos breves. Una valoración temprana ayuda a identificar el calendario aplicable.' }],
-  },
-  {
-    slug: 'litigio-jep',
-    name: 'Litigio Estratégico ante la JEP',
-    shortName: 'JEP',
-    eyebrow: 'Justicia transicional',
-    summary: 'Acompañamiento a víctimas y comparecientes ante salas, secciones y Tribunal para la Paz.',
-    intro: 'La firma presta asesoría y representación ante la Jurisdicción Especial para la Paz, con respeto por los derechos humanos, el debido proceso y la dimensión humana de cada historia.',
-    audience: ['Víctimas del conflicto armado', 'Comparecientes ante la JEP', 'Organizaciones sociales que acompañan procesos', 'Personas que necesitan estructurar solicitudes o pruebas'],
-    services: ['Representación ante salas, secciones y Tribunal para la Paz', 'Acompañamiento en audiencias y diligencias', 'Preparación de informes, solicitudes y pruebas', 'Defensa de derechos procesales y participación de víctimas', 'Seguimiento estratégico del proceso'],
-    process: [
-      { title: 'Escucha y contexto', text: 'Comprendemos la historia, el rol procesal y las necesidades de la persona u organización.' },
-      { title: 'Estructuración', text: 'Ordenamos información, solicitudes y evidencia dentro del marco de la JEP.' },
-      { title: 'Acompañamiento', text: 'Representamos y damos seguimiento a las actuaciones acordadas.' },
-    ],
-    faqs: [{ question: '¿Atienden a víctimas y comparecientes?', answer: 'Sí. El servicio publicado por la firma contempla acompañamiento para ambos roles procesales.' }],
   },
   {
     slug: 'derecho-publico',
-    name: 'Derecho Público y Contratación Estatal',
+    name: 'Derecho Público',
     shortName: 'Derecho Público',
-    eyebrow: 'Relaciones con el Estado',
-    summary: 'Asesoría en contratación estatal, actos administrativos, derechos de petición y análisis normativo.',
-    intro: 'La práctica acompaña a entidades, particulares, contratistas y empresas en sus relaciones jurídicas con el Estado y ante autoridades administrativas.',
-    audience: ['Entidades y servidores públicos', 'Contratistas y proveedores del Estado', 'Ciudadanos ante trámites o conflictos administrativos', 'Empresas con relaciones contractuales o regulatorias'],
-    services: ['Contratación estatal y análisis normativo', 'Conceptos y actos administrativos', 'Derechos de petición y respuestas', 'Representación ante autoridades y jurisdicción contenciosa', 'Consultoría para cumplimiento de deberes públicos'],
-    process: [
-      { title: 'Mapa institucional', text: 'Identificamos entidad, competencia, acto y antecedentes documentales.' },
-      { title: 'Análisis', text: 'Revisamos el marco aplicable y los efectos de cada alternativa.' },
-      { title: 'Intervención', text: 'Preparamos conceptos, solicitudes o representación, según el caso.' },
+    eyebrow: 'Relaciones jurídicas con el Estado',
+    summary: 'Asesoramos y representamos personas, organizaciones y empresas en sus relaciones jurídicas con el Estado y ante la jurisdicción de lo contencioso administrativo.',
+    services: [
+      'Derecho administrativo',
+      'Actos administrativos',
+      'Contratación estatal',
+      'Responsabilidad extracontractual del Estado',
+      'Medios de control ante la jurisdicción contencioso-administrativa',
+      'Procedimientos administrativos',
+      'Derecho constitucional',
+      'Acciones de tutela',
+      'Derechos de petición',
+      'Asesoría a entidades, organizaciones y particulares frente a actuaciones administrativas',
     ],
-    faqs: [{ question: '¿Asesoran a particulares y entidades?', answer: 'Sí. La firma publica atención tanto a entidades como a particulares en sus relaciones con el Estado.' }],
   },
   {
-    slug: 'derecho-empresarial',
-    name: 'Derecho Privado y Empresarial',
-    shortName: 'Empresarial',
-    eyebrow: 'Empresas y patrimonio',
-    summary: 'Contratos, sociedades, litigios civiles, sucesiones, insolvencia y responsabilidad empresarial.',
-    intro: 'La firma asesora a personas, emprendedores y empresas en asuntos civiles, comerciales, societarios y patrimoniales con un enfoque práctico.',
-    audience: ['Empresas que requieren apoyo corporativo', 'Emprendedores que formalizan su operación', 'Personas con conflictos civiles o patrimoniales', 'Clientes con sucesiones, deudas o reclamaciones contractuales'],
-    services: ['Derecho comercial y societario', 'Procesos civiles y contractuales', 'Familia, sucesiones y responsabilidad', 'Contratos civiles y comerciales', 'Insolvencia de personas y empresas', 'Métodos alternativos de solución de conflictos'],
-    process: [
-      { title: 'Diagnóstico', text: 'Revisamos documentos, relaciones jurídicas y exposición al riesgo.' },
-      { title: 'Alternativas', text: 'Comparamos prevención, negociación, conciliación o litigio.' },
-      { title: 'Ejecución', text: 'Implementamos la alternativa acordada y mantenemos seguimiento.' },
+    slug: 'derecho-laboral-y-seguridad-social',
+    name: 'Derecho Laboral y Seguridad Social',
+    shortName: 'Derecho Laboral',
+    eyebrow: 'Trabajadores, empleadores y organizaciones',
+    summary: 'Prestamos asesoría jurídica y representación judicial tanto a trabajadores como a empleadores y organizaciones.',
+    services: [
+      'Derecho laboral individual',
+      'Derecho laboral colectivo',
+      'Contratos de trabajo',
+      'Terminación de relaciones laborales',
+      'Procesos ordinarios laborales',
+      'Seguridad social',
+      'Pensiones',
+      'Fuero sindical',
+      'Procesos de levantamiento de fuero sindical',
+      'Negociación colectiva',
+      'Asesoría laboral empresarial',
+      'Prevención y gestión de contingencias laborales',
     ],
-    faqs: [{ question: '¿Trabajan prevención además de litigio?', answer: 'Sí. La oferta publicada incluye consultoría, contratos, prevención y representación judicial.' }],
+  },
+  {
+    slug: 'justicia-transicional-y-jep',
+    name: 'Justicia Transicional y JEP',
+    shortName: 'Justicia Transicional',
+    eyebrow: 'Jurisdicción Especial para la Paz',
+    summary: 'Contamos con experiencia en litigio estratégico dentro de escenarios de justicia transicional y ante la Jurisdicción Especial para la Paz — JEP.',
+    services: [
+      'Representación ante Salas y Secciones de la JEP',
+      'Participación de víctimas',
+      'Acreditación',
+      'Preparación y presentación de informes',
+      'Presentación y controversia de pruebas',
+      'Audiencias y diligencias judiciales',
+      'Representación de comparecientes',
+      'Seguimiento de macrocasos',
+      'Derechos de las víctimas',
+      'Justicia restaurativa',
+      'Verdad, justicia, reparación y garantías de no repetición',
+    ],
+  },
+  {
+    slug: 'derecho-privado-y-corporativo',
+    name: 'Derecho Privado y Corporativo',
+    shortName: 'Derecho Corporativo',
+    eyebrow: 'Personas, empresas y patrimonio',
+    summary: 'Acompañamos jurídicamente a personas y empresas en la prevención y resolución de controversias privadas y empresariales.',
+    services: [
+      'Derecho civil',
+      'Obligaciones y contratos',
+      'Responsabilidad civil',
+      'Litigios contractuales',
+      'Derecho societario',
+      'Asesoría empresarial',
+      'Elaboración y revisión de contratos',
+      'Conflictos societarios',
+      'Insolvencia',
+      'Sucesiones',
+      'Asuntos de familia',
+      'Prevención de riesgos jurídicos empresariales',
+    ],
+  },
+  {
+    slug: 'solucion-estrategica-de-controversias',
+    name: 'Solución Estratégica de Controversias',
+    shortName: 'Solución de Controversias',
+    eyebrow: 'Alternativas al proceso judicial',
+    summary: 'Analizamos las alternativas disponibles para identificar cuándo una controversia puede resolverse mediante negociación o mecanismos alternativos de solución de conflictos.',
+    services: [
+      'Negociación',
+      'Conciliación',
+      'Mediación',
+      'Amigable composición',
+      'Arbitraje',
+      'Acuerdos transaccionales',
+      'Prevención de controversias',
+    ],
   },
 ];
 
+export const legacyAreaRedirects: Record<string, string> = {
+  'derecho-penal': 'derecho-penal-y-litigio-penal-estrategico',
+  'derecho-laboral': 'derecho-laboral-y-seguridad-social',
+  'derecho-disciplinario': 'derecho-publico',
+  'derecho-electoral': 'derecho-publico',
+  'litigio-jep': 'justicia-transicional-y-jep',
+  'derecho-empresarial': 'derecho-privado-y-corporativo',
+};
+
+export const whyPaba = [
+  { title: 'Experiencia', text: 'Trayectoria profesional en representación judicial, asesoría jurídica y litigio en diferentes jurisdicciones y escenarios institucionales.' },
+  { title: 'Estrategia', text: 'Cada asunto es analizado individualmente para identificar riesgos, alternativas jurídicas, escenarios procesales y la estrategia más adecuada para la protección de los intereses del cliente.' },
+  { title: 'Rigor jurídico', text: 'Nuestras actuaciones se fundamentan en el estudio detallado de los hechos, las pruebas, la legislación y la jurisprudencia aplicable.' },
+  { title: 'Acompañamiento', text: 'Mantenemos una comunicación clara con nuestros clientes sobre el desarrollo del asunto, sus alternativas y las decisiones estratégicas que deben adoptarse.' },
+];
+
+export const workProcess = [
+  { title: 'Análisis inicial', text: 'Estudiamos los antecedentes, hechos, documentos y situación jurídica planteada por el cliente.' },
+  { title: 'Diagnóstico jurídico', text: 'Identificamos los problemas jurídicos, riesgos, fortalezas, debilidades y alternativas disponibles.' },
+  { title: 'Construcción de estrategia', text: 'Definimos los objetivos jurídicos y diseñamos la estrategia procesal, probatoria o negocial correspondiente.' },
+  { title: 'Representación y ejecución', text: 'Implementamos la estrategia mediante las actuaciones judiciales, administrativas, contractuales o extrajudiciales necesarias.' },
+  { title: 'Seguimiento', text: 'Informamos al cliente sobre las principales actuaciones, decisiones y escenarios que se presentan durante el desarrollo del asunto.' },
+];
+
+export const siteFaqs = [
+  { question: '¿Cómo puedo solicitar una consulta?', answer: 'Puede comunicarse con nuestra firma mediante el formulario de contacto, correo electrónico, teléfono o WhatsApp. Nuestro equipo realizará una valoración inicial para determinar la naturaleza del asunto y la posibilidad de asumir su representación.' },
+  { question: '¿La firma atiende asuntos fuera de Bogotá?', answer: 'Sí. Nuestra sede se encuentra en Bogotá D. C., pero prestamos representación y asesoría jurídica en diferentes regiones de Colombia, de acuerdo con las características de cada asunto.' },
+  { question: '¿La valoración inicial garantiza que la firma asumirá mi caso?', answer: 'No. La valoración inicial permite conocer las características generales del asunto. La aceptación de una representación profesional requiere previamente verificar su viabilidad, alcance, eventuales conflictos de interés y condiciones de contratación.' },
+  { question: '¿Cómo se determinan los honorarios?', answer: 'Los honorarios profesionales dependen, entre otros factores, de la naturaleza del asunto, su complejidad, duración estimada, actuaciones requeridas y equipo profesional necesario. Las condiciones económicas se establecen previamente mediante una propuesta de servicios profesionales.' },
+  { question: '¿Puedo realizar una consulta virtual?', answer: 'Sí. Podemos realizar reuniones virtuales cuando la naturaleza del asunto lo permita.' },
+  { question: '¿La información suministrada es confidencial?', answer: 'Sí. La información recibida en desarrollo de la relación profesional es tratada conforme a los deberes legales y éticos aplicables, particularmente los relacionados con el secreto profesional y la protección de datos personales.' },
+];
+
+export const legalAnalysisCategories = [
+  'Derecho Penal',
+  'Derecho Probatorio',
+  'Derecho Público',
+  'Derecho Laboral',
+  'Justicia Transicional y JEP',
+  'Derechos Humanos',
+  'Derecho Corporativo',
+  'Jurisprudencia y actualidad jurídica',
+] as const;
+
 export const editorials: Editorial[] = [
   {
-    slug: 'que-es-la-jep-y-como-puede-ayudarte',
-    title: '¿Qué es la JEP y cómo puede ayudarte si eres víctima del conflicto?',
+    slug: 'jep-y-participacion-de-las-victimas',
+    title: 'La JEP y la participación de las víctimas del conflicto',
     category: 'Justicia Transicional y JEP',
     date: '2025-08-15',
     displayDate: '15 de agosto de 2025',
-    author: 'Paba & Asociados',
+    author: 'Paba & Asociados Abogados Consultores S.A.S.',
+    authorRole: 'Firma jurídica',
     summary: 'Una introducción a la Jurisdicción Especial para la Paz y a las posibilidades de participación de las víctimas.',
     image: '/editorial-jep.jpg',
-    imageAlt: 'Grupo diverso de personas reunidas en un gesto de apoyo',
+    imageAlt: 'Personas reunidas en un espacio de diálogo y acompañamiento',
+    readingTime: '4 min de lectura',
     body: [
       'La Jurisdicción Especial para la Paz (JEP) es uno de los pilares del Sistema Integral de Verdad, Justicia, Reparación y No Repetición creado tras los acuerdos de paz en Colombia. Su objetivo es juzgar los crímenes más graves del conflicto armado y ofrecer una justicia restaurativa que priorice los derechos de las víctimas.',
-      'Las víctimas de delitos ocurridos en el marco del conflicto pueden participar para aportar información, relatar su caso y solicitar acompañamiento jurídico durante el proceso.',
+      'Las víctimas de delitos ocurridos en el marco del conflicto pueden participar para aportar información, relatar su situación y solicitar acompañamiento jurídico durante el proceso.',
       'Una preparación jurídica cuidadosa ayuda a organizar los hechos y la documentación, proteger la voz de quienes participan y presentar las solicitudes ante el escenario especializado correspondiente.',
     ],
     quote: 'La participación informada empieza por comprender el proceso y el lugar que cada persona ocupa en él.',
@@ -186,67 +265,87 @@ export const editorials: Editorial[] = [
     category: 'Derecho Laboral',
     date: '2025-08-15',
     displayDate: '15 de agosto de 2025',
-    author: 'Paba & Asociados',
-    summary: 'Puntos iniciales para entender una terminación laboral y organizar la información antes de buscar asesoría.',
+    author: 'Paba & Asociados Abogados Consultores S.A.S.',
+    authorRole: 'Firma jurídica',
+    summary: 'Puntos iniciales para comprender una terminación laboral y organizar la información antes de solicitar asesoría.',
     image: '/editorial-laboral.jpg',
     imageAlt: 'Conversación de asesoría alrededor de una mesa',
+    readingTime: '4 min de lectura',
     body: [
       'La legislación colombiana contempla consecuencias cuando un empleador termina un contrato sin una causa legal aplicable. El análisis depende del tipo de contrato, el tiempo trabajado y las circunstancias de la terminación.',
       'Además de una eventual indemnización, una revisión puede incluir salarios, prestaciones pendientes y situaciones que involucren derechos fundamentales.',
-      'Conservar el contrato, las comunicaciones, los comprobantes y una cronología precisa facilita una valoración inicial del caso.',
+      'Conservar el contrato, las comunicaciones, los comprobantes y una cronología precisa facilita una valoración inicial del asunto.',
     ],
   },
   {
-    slug: 'que-hacer-ante-denuncia-penal-injusta',
-    title: '¿Qué hacer si recibes una denuncia penal que consideras injusta?',
+    slug: 'actuacion-ante-denuncia-penal-injusta',
+    title: 'Actuación frente a una denuncia penal que se considera injusta',
     category: 'Derecho Penal',
     date: '2025-08-15',
     displayDate: '15 de agosto de 2025',
-    author: 'Paba & Asociados',
-    summary: 'Acciones prudentes para proteger tus derechos y preparar una defensa desde las primeras etapas.',
+    author: 'Paba & Asociados Abogados Consultores S.A.S.',
+    authorRole: 'Firma jurídica',
+    summary: 'Acciones prudentes para proteger derechos y preparar una defensa desde las primeras etapas.',
     image: '/editorial-penal.jpg',
-    imageAlt: 'Profesional escuchando a una persona durante una consulta',
+    imageAlt: 'Profesional escuchando una consulta jurídica',
+    readingTime: '4 min de lectura',
     body: [
-      'Recibir una denuncia puede producir incertidumbre, incluso cuando consideras que carece de fundamento. Mantener la calma y entender la etapa en la que se encuentra la actuación es el primer paso.',
+      'Recibir una denuncia puede producir incertidumbre, incluso cuando se considera que carece de fundamento. Mantener la calma y entender la etapa en la que se encuentra la actuación es el primer paso.',
       'No conviene ignorar comunicaciones oficiales ni entregar versiones improvisadas. Una defensa puede revisar la denuncia, organizar información, solicitar elementos relevantes y preparar las actuaciones necesarias.',
       'La consulta temprana permite tomar decisiones con contexto y proteger las garantías procesales desde el inicio.',
     ],
   },
 ];
 
-export const mediaCoverage = [
-  { outlet: 'RCN Radio', title: '“Es un segundo montaje judicial”: procesados por atentado en Centro Andino', url: 'https://www.rcnradio.com/judicial/es-un-segundo-montaje-judicial-procesados-por-atentado-en-centro-andino' },
-  { outlet: 'El Heraldo', title: 'Defensa de víctimas, profesión peligrosa', url: 'https://www.elheraldo.co/region/2012/08/31/defensa-de-victimas-profesion-peligro/' },
-  { outlet: 'El Tiempo', title: 'Otro libre: ¿se desmorona caso del atentado al Andino?', url: 'https://www.eltiempo.com/unidad-investigativa/otro-libre-se-desmorona-caso-del-atentado-al-centro-comercial-andino-565065' },
-  { outlet: 'Noticias Caracol', title: 'Dejan en libertad a los 11 señalados de cometer atentado del Centro Andino', url: 'https://www.noticiascaracol.com/colombia/bogota/dejan-en-libertad-a-los-11-senalados-de-cometer-atentado-del-centro-comercial-andino' },
-  { outlet: 'Voz Digital', title: 'Ejército Nacional acribilló jóvenes mientras dormían', url: 'https://www.youtube.com/watch?v=QGl6ZjFfnIQ' },
-  { outlet: 'Noticias RCN', title: 'Cinco personas vinculadas con atentado al Andino fueron recapturadas', url: 'https://www.noticiasrcn.com/colombia/cinco-personas-vinculadas-con-atentado-al-andino-fueron-recapturadas-358113' },
-] as const;
+export const legacyEditorialRedirects: Record<string, string> = {
+  'que-es-la-jep-y-como-puede-ayudarte': 'jep-y-participacion-de-las-victimas',
+  'que-hacer-ante-denuncia-penal-injusta': 'actuacion-ante-denuncia-penal-injusta',
+};
 
-// Intencionalmente vacío hasta que la firma valide identidades, fotografías y credenciales.
-// La ruta dinámica y el modelo ya están preparados para incorporar perfiles verificados.
-export const professionals: Professional[] = [];
+// El documento oficial no suministra artículos para publicar todavía.
+export const legalAnalyses: LegalAnalysis[] = [];
 
-export const publicCases = [
+export const professionals: Professional[] = [
+  {
+    slug: 'jeison-orlando-paba-reyes',
+    name: 'Jeison Orlando Paba Reyes',
+    role: 'Director / Socio',
+    biography: [
+      'Abogado litigante y defensor de derechos humanos con amplia experiencia profesional en representación judicial, litigio estratégico y asesoría jurídica.',
+      'Su práctica profesional se ha desarrollado especialmente en las áreas de Derecho Penal, Derecho Público, Derechos Humanos, Justicia Transicional y litigio estratégico, con experiencia en actuaciones ante autoridades judiciales y administrativas y en la representación de víctimas y personas vinculadas a procesos judiciales de alta complejidad.',
+    ],
+    areas: ['Derecho Penal', 'Derecho Público', 'Derechos Humanos', 'Justicia Transicional', 'Litigio Estratégico'],
+    education: [],
+    experience: [],
+    academicActivity: ['Paralelamente al ejercicio profesional, desarrolla actividad académica y docente universitaria en áreas relacionadas con el Derecho, la argumentación, la hermenéutica jurídica y el Derecho Probatorio.'],
+    publicationSlugs: [],
+    relatedActuationSlugs: [],
+  },
+];
+
+export const publicActuations: PublicActuation[] = [
   {
     slug: 'proceso-penal-centro-andino',
     title: 'Proceso penal relacionado con el Centro Andino',
     area: 'Derecho Penal',
     date: 'Cobertura pública entre 2018 y 2021',
-    image: '/hero-office.jpg',
-    imageAlt: 'Profesionales revisando documentación jurídica',
-    summary: 'Una lectura documental de la cobertura periodística que el sitio vigente de la firma vincula con su trayectoria.',
-    context: 'Diversos medios nacionales registraron decisiones judiciales y actuaciones dentro del proceso relacionado con el atentado al Centro Andino.',
-    challenge: 'Los procesos penales de alta exposición pública exigen rigor técnico, prudencia comunicativa y respeto por la reserva y la presunción de inocencia.',
-    strategy: 'Esta ficha reúne únicamente fuentes públicas enlazadas por la firma. La demo omite identidades, detalles reservados y cualquier afirmación que no esté documentada.',
-    result: 'Las fuentes relacionadas registran decisiones distintas en varias etapas del proceso. Para preservar exactitud, el detalle se consulta directamente en cada publicación.',
-    lawyerSlugs: [] as string[],
-    relatedEditorialSlugs: ['que-hacer-ante-denuncia-penal-injusta'] as string[],
-    sources: mediaCoverage.filter((item) => ['RCN Radio', 'El Tiempo', 'Noticias Caracol', 'Noticias RCN'].includes(item.outlet)),
+    summary: 'Actuaciones de defensa penal registradas en publicaciones de medios nacionales dentro de un proceso de conocimiento público.',
+    intervention: 'Intervención profesional como abogado defensor, de acuerdo con las declaraciones y referencias publicadas por los medios enlazados.',
+    context: 'La cobertura pública registra distintas decisiones y actuaciones procesales relacionadas con personas investigadas por el atentado al Centro Andino. Esta ficha se limita a identificar la intervención profesional documentada por fuentes abiertas y no formula afirmaciones sobre información sometida a reserva.',
+    professionalSlugs: [],
+    sources: [
+      { outlet: 'Noticias RCN', title: 'Cinco personas vinculadas con atentado al Andino fueron recapturadas', url: 'https://www.noticiasrcn.com/colombia/cinco-personas-vinculadas-con-atentado-al-andino-fueron-recapturadas-358113', date: '8 de junio de 2020' },
+      { outlet: 'El Tiempo', title: 'Otro libre: ¿se desmorona caso del atentado al Andino?', url: 'https://www.eltiempo.com/unidad-investigativa/otro-libre-se-desmorona-caso-del-atentado-al-centro-comercial-andino-565065', date: '5 de febrero de 2021' },
+      { outlet: 'RCN Radio', title: '“Es un segundo montaje judicial”: procesados por atentado en Centro Andino', url: 'https://www.rcnradio.com/judicial/es-un-segundo-montaje-judicial-procesados-por-atentado-en-centro-andino' },
+      { outlet: 'Noticias Caracol', title: 'Dejan en libertad a los 11 señalados de cometer atentado del centro comercial Andino', url: 'https://www.noticiascaracol.com/colombia/bogota/dejan-en-libertad-a-los-11-senalados-de-cometer-atentado-del-centro-comercial-andino', date: '24 de agosto de 2018' },
+    ],
   },
-] as const;
+];
+
+export const confidentialityNotice = 'La información publicada en esta sección corresponde exclusivamente a asuntos de conocimiento público. La firma protege la confidencialidad y reserva profesional de sus clientes.';
 
 export function getArea(slug: string) { return practiceAreas.find((area) => area.slug === slug); }
 export function getEditorial(slug: string) { return editorials.find((item) => item.slug === slug); }
-export function getCase(slug: string) { return publicCases.find((item) => item.slug === slug); }
+export function getLegalAnalysis(slug: string) { return legalAnalyses.find((item) => item.slug === slug); }
 export function getProfessional(slug: string) { return professionals.find((item) => item.slug === slug); }
+export function getPublicActuation(slug: string) { return publicActuations.find((item) => item.slug === slug); }
